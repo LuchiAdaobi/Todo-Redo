@@ -1,0 +1,1 @@
+Redoing a todo I just finished to better practice those JS fundamentals
