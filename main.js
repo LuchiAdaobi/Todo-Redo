@@ -69,23 +69,29 @@ function loadList(array) {
 function completeTodo(element) {
   element.classList.toggle(CHECK);
   element.classList.toggle(UNCHECK);
-  element.parentNode.querySelector('.text').classList.toggle();
+  element.parentNode.querySelector('.text').classList.toggle(LINE_THROUGH);
 
   LIST[element.id].done = !!LIST[element.id].done;
 }
 
 // REMOVE TODOS
 function deleteTodo(element) {
-  element.parentNode.parentNode.remove(element.parentNode);
+  element.parentNode.remove(element.parentNode);
   LIST[element.id].trash = true;
 }
 
 // EVENT LISTENS
+// dynamically created content
 listEL.addEventListener('click', (e) => {
   const element = e.target;
   const elementJob = element.attributes.job.value;
 
-  
+  if (elementJob === 'complete') {
+    completeTodo(element);
+  } else if (elementJob === 'delete') {
+    deleteTodo(element);
+  }
+  localStorage.setItem('TODO', JSON.stringify(LIST));
 });
 
 inputEL.addEventListener('keyup', (e) => {
@@ -108,4 +114,10 @@ inputEL.addEventListener('keyup', (e) => {
     }
     inputEL.value = '';
   }
+});
+
+// CLEAR TODO
+clearEl.addEventListener('click', () => {
+  localStorage.clear();
+  location.reload();
 });
