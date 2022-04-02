@@ -148,3 +148,14 @@ body{
     font-size: 20px;
 }
 
+.select{
+    position: absolute;
+    right: 9px;
+    top: 15px;
+}
+.filter-todo{
+ font-family: inherit;
+ cursor: pointer;
+ font-size: 1.1rem;
+outline: none;
+}

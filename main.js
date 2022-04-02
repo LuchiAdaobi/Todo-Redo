@@ -3,6 +3,7 @@ const clearEl = document.querySelector('.clear');
 const dateEL = document.querySelector('#date');
 const listEL = document.querySelector('#list');
 const inputEL = document.querySelector('#input');
+const filterOptions = document.querySelector('.filter-todo');
 
 // CLASSES
 const CHECK = 'fa-check-circle';
@@ -121,3 +122,34 @@ clearEl.addEventListener('click', () => {
   localStorage.clear();
   location.reload();
 });
+
+// FILTER TODOS
+function filterTodos(e) {
+  const todos = listEL.childNodes;
+
+  // console.log(todos);
+  todos.forEach((todo) => {
+    switch (e.target.value) {
+      case 'all':
+        todo.display = 'block';
+        break;
+
+      case 'completed':
+        if (todo.classList.contains === 'CHECK') {
+          todo.style.display = 'block';
+        } else {
+          todo.display = 'none';
+        }
+        break;
+      case 'uncompleted':
+        if (!todo.classList.contains === 'CHECK') {
+          todo.display = 'block';
+        } else {
+          todo.display = 'none';
+        }
+        break;
+    }
+  });
+}
+
+filterOptions.addEventListener('click', filterTodos);
