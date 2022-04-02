@@ -124,19 +124,23 @@ clearEl.addEventListener('click', () => {
 });
 
 // FILTER TODOS
+// I tried different selectors/class names to be able to target that 'check' class but nothing seems to be working
 function filterTodos(e) {
   const todos = listEL.childNodes;
-
   // console.log(todos);
   todos.forEach((todo) => {
+    console.log(
+      todo.nextElementSibling.querySelector('.text').classList.contains ===
+        'fa-check-circle'
+    );
     switch (e.target.value) {
       case 'all':
         todo.display = 'block';
         break;
 
       case 'completed':
-        if (todo.classList.contains === 'CHECK') {
-          todo.style.display = 'block';
+        if (todo.classList.contains === 'fa-check-circle') {
+          todo.display = 'block';
         } else {
           todo.display = 'none';
         }
