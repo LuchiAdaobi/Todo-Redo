@@ -10,6 +10,8 @@ const CHECK = 'fa-check-circle';
 const UNCHECK = 'fa-circle';
 const LINE_THROUGH = 'lineThrough';
 
+// decided to create a badass shopping list app
+
 // DATE
 const dateFormat = {
   weekday: 'long',
@@ -156,5 +158,6 @@ function filterTodos(e) {
     }
   });
 }
+// The click event is triggered when you click on the element, but for elements like inputs or selects, is way better to use the input event, because it will call the event listener function only when the value change (in the case of the select, that will be when the user selects an option).
 
-filterOptions.addEventListener('click', filterTodos);
+filterOptions.addEventListener('input', filterTodos);
