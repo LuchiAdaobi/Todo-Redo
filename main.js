@@ -161,3 +161,5 @@ function filterTodos(e) {
 // The click event is triggered when you click on the element, but for elements like inputs or selects, is way better to use the input event, because it will call the event listener function only when the value change (in the case of the select, that will be when the user selects an option).
 
 filterOptions.addEventListener('input', filterTodos);
+// another way of doing the above
+// filterOptions.oninput = filterTodos;
