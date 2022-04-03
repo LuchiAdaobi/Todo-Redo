@@ -73,6 +73,7 @@ function completeTodo(element) {
   element.parentNode.querySelector('.text').classList.toggle(LINE_THROUGH);
 
   LIST[element.id].done = !!LIST[element.id].done;
+  localStorage.setItem('TODO', LIST);
 }
 
 // REMOVE TODOS
@@ -124,32 +125,32 @@ clearEl.addEventListener('click', () => {
 });
 
 // FILTER TODOS
-// I tried different selectors/class names to be able to target that 'check' class but nothing seems to be working
+
 function filterTodos(e) {
-  const todos = listEL.childNodes;
-  // console.log(todos);
+  //  select all the items
+  const todos = listEL.querySelectorAll('.item');
   todos.forEach((todo) => {
-    console.log(
-      todo.nextElementSibling.querySelector('.text').classList.contains ===
-        'fa-check-circle'
-    );
+    const iconChecked = todo
+      .querySelector('i')
+      .classList.contains('fa-check-circle');
+
     switch (e.target.value) {
       case 'all':
-        todo.display = 'block';
+        todo.style.display = 'block';
         break;
 
       case 'completed':
-        if (todo.classList.contains === 'fa-check-circle') {
-          todo.display = 'block';
+        if (iconChecked) {
+          todo.style.display = 'block';
         } else {
-          todo.display = 'none';
+          todo.style.display = 'none';
         }
         break;
       case 'uncompleted':
-        if (!todo.classList.contains === 'CHECK') {
-          todo.display = 'block';
+        if (!iconChecked) {
+          todo.style.display = 'block';
         } else {
-          todo.display = 'none';
+          todo.style.display = 'none';
         }
         break;
     }
