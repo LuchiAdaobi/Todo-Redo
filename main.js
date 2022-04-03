@@ -74,8 +74,8 @@ function completeTodo(element) {
   element.classList.toggle(UNCHECK);
   element.parentNode.querySelector('.text').classList.toggle(LINE_THROUGH);
 
-  LIST[element.id].done = !!LIST[element.id].done;
-  localStorage.setItem('TODO', LIST);
+  LIST[element.id].done = !LIST[element.id].done;
+  localStorage.setItem('TODO', JSON.stringify(LIST));
 }
 
 // REMOVE TODOS
